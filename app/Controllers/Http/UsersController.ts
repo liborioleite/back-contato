@@ -9,7 +9,7 @@ export default class UsersController {
         if (!user) {
             return response.notFound('Nenhum registro encontrado.')
         }
-        console.log(user);
+       
         return response.ok(user)
     }
     public async store({ response, request }: HttpContextContract) {
