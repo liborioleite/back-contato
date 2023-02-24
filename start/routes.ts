@@ -4,6 +4,7 @@ import Route from '@ioc:Adonis/Core/Route'
 Route.group(() => {
   Route.get('/index', 'UsersController.index')
   Route.get('/show/:id', 'UsersController.show')
+  Route.put('/update/:id', 'UsersController.update')
   Route.post('/new', 'UsersController.store')
 }).namespace('App/Controllers/Http/User').middleware(['auth:jwt'])
 
