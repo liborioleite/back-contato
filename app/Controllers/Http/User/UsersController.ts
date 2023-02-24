@@ -9,9 +9,10 @@ export default class UsersController {
         if (!user) {
             return response.notFound('Nenhum registro encontrado.')
         }
-       
+
         return response.ok(user)
     }
+
     public async store({ response, request }: HttpContextContract) {
         const itemSchema = schema.create({
             email: schema.string(),
@@ -48,6 +49,7 @@ export default class UsersController {
         })
         return response.ok(user)
     }
+
     public async update({ response, request, params }: HttpContextContract) {
         const itemSchema = schema.create({
             email: schema.string(),
@@ -78,17 +80,19 @@ export default class UsersController {
 
         return response.ok('Dados alterados com sucesso')
     }
-    public async destroy({ response, params }: HttpContextContract) {
-        const user = await User.findBy('id', params.id)
-        // const user = await User.find(params.id)
-        // const user = await User.find(request.param('id'))
-        // const user = await User.find(request.param('id', 1))
-        if (!user) {
-            return response.notFound('usuário não encontrado.')
-        }
-        await user.delete()
-        return response.ok('Usuário deletado com sucesso.')
-    }
+
+    // public async destroy({ response, params }: HttpContextContract) {
+    //     const user = await User.findBy('id', params.id)
+    //     // const user = await User.find(params.id)
+    //     // const user = await User.find(request.param('id'))
+    //     // const user = await User.find(request.param('id', 1))
+    //     if (!user) {
+    //         return response.notFound('usuário não encontrado.')
+    //     }
+    //     await user.delete()
+    //     return response.ok('Usuário deletado com sucesso.')
+    // }
+
     public async show({ response, params }: HttpContextContract) {
         const user = await User.findBy('id', params.id)
         // const user = await User.find(params.id)
